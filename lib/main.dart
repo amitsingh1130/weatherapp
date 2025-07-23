@@ -31,9 +31,9 @@ class VSJHomePage extends StatefulWidget {
 
   //*****************************************************************************************
   final String vsjurl =
-      "https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png";
+      "https://amitsingh1130.github.io/myjsonfiles/pic.jpg/Amit.jpg";
   String currenturl =
-      "https://3.bp.blogspot.com/-py5FbTZgvjo/YDi1bsQq16I/AAAAAAAACB0/BxejbJBcHA4AVfkB33WYC3YlVmxElM7BwCK4BGAYYCw/s1600/Varanasi%2BSoftware%2BJunction%2BPhone%2BLogo.png";
+      "https://amitsingh1130.github.io/myjsonfiles/pic.jpg/Amit.jpg";
 
   Future<bool> getWeather(String cityname) async {
     String apikey = "4a1f8a61b74546825af1e0be106e797b";
@@ -116,16 +116,16 @@ class _VSJPageState extends State<VSJHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.getTitle()),
+      appBar: AppBar(backgroundColor: Colors.deepPurple,
+        title: Text(widget.getTitle(),style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic,fontWeight: FontWeight.w600,fontSize: 34),),
         centerTitle: true,
       ),
       body: Column(
-        children: [
+        children: [SizedBox(height: 50),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text("City Name: ", style: widget.datalabelstyle),
+              Text("City Name: ", style: widget.datalabelstyle.copyWith(fontSize: 20,color:Colors.greenAccent,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic,shadows: [Shadow(blurRadius: 2,color: Colors.greenAccent,offset: Offset(2, 1))],)),
               Expanded(
                   flex: 2,
                   child: TextField(
@@ -141,8 +141,9 @@ class _VSJPageState extends State<VSJHomePage> {
               Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      child: const Text("Get Weather"),
+                    child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.yellowAccent),
+                      child: const Text("Get Weather",style: TextStyle(fontStyle: FontStyle.italic,fontSize: 15,fontWeight: FontWeight.bold
+                      ),),
                       onPressed: () async {
                         await widget.getWeather(widget.cityname);
                         setState(() {});
@@ -160,8 +161,8 @@ class _VSJPageState extends State<VSJHomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text("Current Temp", style: widget.datalabelstyle),
-                          Text(widget.currentcitytemp, style: widget.datatextstyle),
+                          Text("Current Temp", style: widget.datalabelstyle.copyWith(fontSize: 20,color:Colors.greenAccent,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic,shadows: [Shadow(blurRadius: 2,color: Colors.greenAccent,offset: Offset(2, 1))])),
+                          Text(widget.currentcitytemp, style: widget.datatextstyle.copyWith(fontStyle: FontStyle.italic,fontWeight: FontWeight.w600,fontSize: 20)),
                         ],
                       ),
                     ),
@@ -171,8 +172,8 @@ class _VSJPageState extends State<VSJHomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text("Max Temp", style: widget.datalabelstyle),
-                          Text(widget.currentmaxtemp, style: widget.datatextstyle),
+                          Text("Max Temp", style: widget.datalabelstyle.copyWith(fontSize: 20,color:Colors.greenAccent,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic,shadows: [Shadow(blurRadius: 2,color: Colors.greenAccent,offset: Offset(2, 1))],)),
+                          Text(widget.currentmaxtemp, style: widget.datatextstyle.copyWith(fontStyle: FontStyle.italic,fontWeight: FontWeight.w600,fontSize: 20)),
                         ], //Children
                       ), //Column
                     ), //Padding
@@ -182,8 +183,8 @@ class _VSJPageState extends State<VSJHomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text("Min Temp", style: widget.datalabelstyle),
-                          Text(widget.currentmintemp, style: widget.datatextstyle),
+                          Text("Min Temp", style: widget.datalabelstyle.copyWith(fontSize: 20,color:Colors.greenAccent,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic,shadows: [Shadow(blurRadius: 2,color: Colors.greenAccent,offset: Offset(2, 1))],)),
+                          Text(widget.currentmintemp, style: widget.datatextstyle.copyWith(fontStyle: FontStyle.italic,fontWeight: FontWeight.w600,fontSize: 20)),
                         ], //Children
                       ), //Column
                     ), //Padding
@@ -193,8 +194,8 @@ class _VSJPageState extends State<VSJHomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Text("Description", style: widget.datalabelstyle),
-                          Text(widget.description, style: widget.datatextstyle),
+                          Text("Description", style: widget.datalabelstyle.copyWith(fontSize: 20,color:Colors.greenAccent,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic,shadows: [Shadow(blurRadius: 2,color: Colors.greenAccent,offset: Offset(2, 1))],)),
+                          Text(widget.description, style: widget.datatextstyle.copyWith(fontStyle: FontStyle.italic,fontWeight: FontWeight.w600,fontSize: 17)),
                         ], //Children
                       ), //Column
                     ), //Padding
@@ -204,17 +205,18 @@ class _VSJPageState extends State<VSJHomePage> {
               )),
           Expanded(
             child: Card(
-                shadowColor: Colors.black,
-                elevation: 5,
+                shadowColor: Colors.deepPurple,
+                elevation: 50,
+                child: ClipRRect(borderRadius: BorderRadius.circular(30),
                 child: Image.network(
                   (widget.weatherfound)
                       ? "https://openweathermap.org/img/w/${widget.currenticon}.png"
                       : widget.currenturl,
                   height: 150,
-                  width: 150,
+                  width: 250,
                   fit: BoxFit.cover,
                 )),
-          )
+          )),  const SizedBox(height: 50),
         ],
       ),
     );
