@@ -3,13 +3,13 @@ import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
 void main() async {
-  VSJApp vsjApp = VSJApp();
-  await vsjApp.vsjHomePage.getWeather("Varanasi");
-  runApp(vsjApp);
+  WeatherApp weatherApp = WeatherApp();
+  await weatherApp.weatherHomePage.getWeather("Varanasi");
+  runApp(weatherApp);
 }
 
-class VSJApp extends StatelessWidget {
-  VSJHomePage vsjHomePage = VSJHomePage(title: 'Varanasi Software Junction');
+class WeatherApp extends StatelessWidget {
+  WeatherHomePage weatherHomePage = WeatherHomePage(title: 'Varanasi Software Junction');
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +19,18 @@ class VSJApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: vsjHomePage,
+      home: weatherHomePage,
     );
   }
 }
 
-class VSJHomePage extends StatefulWidget {
+class WeatherHomePage extends StatefulWidget {
   //http://openweathermap.org/img/w/10d.png
   bool weatherfound = true;
   String currenticon = "";
 
   //*****************************************************************************************
-  final String vsjurl =
+  final String weatherurl =
       "https://amitsingh1130.github.io/myjsonfiles/pic.jpg/Amit.jpg";
   String currenturl =
       "https://amitsingh1130.github.io/myjsonfiles/pic.jpg/Amit.jpg";
@@ -76,11 +76,11 @@ class VSJHomePage extends StatefulWidget {
   }
 
   //*****************************************************************************************
-  VSJHomePage({Key? key, required this.title}) : super(key: key);
+  WeatherHomePage({Key? key, required this.title}) : super(key: key);
   final TextEditingController _controller =
   TextEditingController(text: 'Varanasi');
   String getTitle() {
-    return "VSJ - Weather API: ";
+    return "Weather API => Select City: ";
   }
 
   String cityname = "Varanasi";
@@ -109,10 +109,10 @@ class VSJHomePage extends StatefulWidget {
   );
 
   @override
-  _VSJPageState createState() => _VSJPageState();
+  _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _VSJPageState extends State<VSJHomePage> {
+class _WeatherPageState extends State<WeatherHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
