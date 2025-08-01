@@ -9,7 +9,7 @@ void main() async {
 }
 
 class WeatherApp extends StatelessWidget {
-  WeatherHomePage weatherHomePage = WeatherHomePage(title: 'Varanasi Software Junction');
+  WeatherHomePage weatherHomePage = WeatherHomePage(title: 'Weather app');
 
   @override
   Widget build(BuildContext context) {
